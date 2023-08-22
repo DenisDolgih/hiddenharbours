@@ -8,8 +8,6 @@ import Nav from './Nav';
 import 'react-quill/dist/quill.snow.css';
 import './App.scss'
 
-import editImg from './assets/edit.svg'
-
 function App() {
   // get param from url
   const code = useParams().code || '';
