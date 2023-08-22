@@ -16,7 +16,7 @@ export default function Nav({ toggleToolbar, currentURL }: IProps) {
     const code = useParams().code || '';
     // get shortened url from external api
     const getLink = () => {
-        fetch(`https://api.shrtco.de/v2/shorten?url=${currentURL}`)
+        fetch(`https://api.shrtco.de/v2/shorten?url=${import.meta.env.DOMAIN_NAME}${currentURL}`)
             .then(res => res.json())
             .then(data => console.log(data))
     }
