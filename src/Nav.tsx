@@ -1,8 +1,7 @@
-import { useParams } from "react-router"
-
 interface IProps{
     toggleToolbar: () => void
-    currentURL: string
+    currentURL: string,
+    contentEditable: boolean
 }
 
 
@@ -11,9 +10,7 @@ interface IProps{
  *
  * @return {JSX.Element} The rendered navigation component.
  */
-export default function Nav({ toggleToolbar, currentURL }: IProps) {
-    // get param from url
-    const code = useParams().code || '';
+export default function Nav({ toggleToolbar, currentURL, contentEditable }: IProps) {
     // get shortened url from external api
     const getLink = () => {
         fetch(`https://api.shrtco.de/v2/shorten?url=${import.meta.env.VITE_DOMAIN_NAME}${currentURL}`)
@@ -25,7 +22,7 @@ export default function Nav({ toggleToolbar, currentURL }: IProps) {
             <ul>
                 <li><a href="/about">About</a></li>
                 <li><a href="/">New Article</a></li>
-                {code && <li><a href="#" onClick={ toggleToolbar }>Edit</a></li>}
+                {!contentEditable && <li><a href="#" onClick={ toggleToolbar }>Edit</a></li>}
                 <li><a href="#" onClick={getLink}>Get link</a></li>
             </ul>
         </nav>
