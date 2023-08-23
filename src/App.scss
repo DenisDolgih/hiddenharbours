@@ -5,20 +5,25 @@
   text-align: center;
 }
 
-.ql-toolbar, .ql-container, .ql-snow {
-  border: none !important;;
+.ql-toolbar,
+.ql-container,
+.ql-snow {
+  border: none !important;
+  ;
 }
 
-.hide-toolbar .ql-toolbar {
-  padding: 0;
-  border-bottom: hidden;
-  border: none 
-  span {
-      display: none;
+.hide-toolbar {
+  .ql-toolbar {
+    padding: 0;
+    border-bottom: hidden;
+    border: none; 
+    span {
+      display: none !important;
+    }
   }
 }
 
-nav ul{
+nav ul {
   list-style-type: none;
   padding: 0;
   list-style: none;
@@ -26,8 +31,9 @@ nav ul{
   display: flex;
   justify-content: space-between;
   margin: 0 0 2rem;
-  li{
-    .link{
+
+  li {
+    .link {
       cursor: pointer;
       text-decoration: none;
       font-family: Arial, Helvetica, sans-serif;
@@ -40,16 +46,19 @@ nav ul{
       transition: all 0.2s ease;
       border: 2px solid black;
       border-radius: 5px;
-      @media screen and (max-width: 768px){
+
+      @media screen and (max-width: 768px) {
         font-size: 0.5rem;
         padding: 0.3rem;
       }
-      &:hover{
+
+      &:hover {
         color: white;
         background-color: black;
         transition: all 0.2s ease;
       }
-      &.active{
+
+      &.active {
         color: white;
         background-color: black;
         transition: all 0.2s ease;
@@ -59,7 +68,7 @@ nav ul{
   }
 }
 
-.chips{
+.chips {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -71,8 +80,8 @@ nav ul{
   border: 2px solid white;
   border-radius: 5px;
   font-size: 1.2rem;
-  &.hidden{
+
+  &.hidden {
     display: none;
   }
 }
-

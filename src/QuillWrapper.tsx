@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react'
 import ReactQuill from 'react-quill';
 
 interface IProps {
-    className: string
+    classNames: string
     onChange: (content: string) => void
     readOnly: boolean
     value: string
@@ -11,14 +11,13 @@ interface IProps {
 /**
  * Renders a wrapper component for the Quill editor.
  *
- * @param {string} className - The class name for the wrapper component.
+ * @param {string} classNames - The class name for the wrapper component.
  * @param {function} onChange - The callback function for handling editor changes.
  * @param {boolean} readOnly - Determines if the editor is read-only.
  * @param {string} value - The initial value of the editor.
- * @param {object} modules - The modules configuration for the editor.
  * @return {JSX.Element} The React component for the Quill wrapper.
  */
-export default function QuillWrapper({ className, onChange, readOnly, value }: IProps): JSX.Element {
+export default function QuillWrapper({ classNames, onChange, readOnly, value }: IProps): JSX.Element {
     {
 
         // reference to Quill
@@ -52,14 +51,16 @@ export default function QuillWrapper({ className, onChange, readOnly, value }: I
         }
 
         return (
+            
             <ReactQuill
                 ref={quill}
-                className={className}
+                className={classNames}
                 onChange={onChange}
                 readOnly={readOnly}
                 value={value}
                 modules={modules}
             />
+            
         )
 
     }

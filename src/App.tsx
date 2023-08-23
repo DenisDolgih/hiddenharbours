@@ -8,59 +8,60 @@ import Nav from './Nav';
 import 'react-quill/dist/quill.snow.css';
 import './App.scss'
 
+/**
+ * Renders the main App component.
+ *
+ * @return {JSX.Element} The rendered App component.
+ */
 function App(): JSX.Element {
-
-  // get param from url
+  // Get param from url
   const code = useParams().code || '';
 
-  // define state
+  // Define state
   const [contentEditable, setContentEditable] = useState(code ? false : true);
   const [siteContent, setSiteContent] = useState('');
 
-  const navigator = useNavigate()
+  const navigator = useNavigate();
 
   /**
    * Toggles the toolbar.
-   *
-   * @return {void} 
    */
   const toggleToolbar = (): void => {
     setContentEditable(!contentEditable);
-  }
-
-
+  };
 
   useEffect(() => {
-    // decode param
+    /**
+     * Decode the param and set the site content.
+     */
     const decoded = lzString.decompressFromEncodedURIComponent(code);
     setSiteContent(decoded);
-  }, [code])
+  }, [code]);
 
   /**
    * Handles the content change event.
    *
    * @param {string} content - The new content for the site.
-   * @return {void} This function does not return any value.
    */
   const InputChangeHandler = (content: string): void => {
-    // update site content
+    // Update site content
     setSiteContent(content);
-    // update url
-    navigator(`/${lzString.compressToEncodedURIComponent(content)}`)
-  }
+    // Update url
+    navigator(`/${lzString.compressToEncodedURIComponent(content)}`);
+  };
 
   return (
     <>
       <Nav currentURL={code} toggleToolbar={toggleToolbar} contentEditable={contentEditable} />
 
       <QuillWrapper
-        className={`${!contentEditable ? 'hide-toolbar' : ''}`}
+        classNames={`${!contentEditable ? 'hide-toolbar' : ''}`}
         onChange={InputChangeHandler}
         readOnly={!contentEditable}
         value={siteContent}
       />
     </>
-  )
+  );
 }
 
 export default App
