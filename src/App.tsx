@@ -9,7 +9,7 @@ import 'react-quill/dist/quill.snow.css';
 import './App.scss'
 
 function App() {
-  const quill = useRef(null);
+  const quill = useRef<ReactQuill>(null);
   // get param from url
   const code = useParams().code || '';
 
@@ -56,7 +56,7 @@ function App() {
 
   useEffect(() => {
     if (quill.current) quill.current.focus()
-  })
+  },[])
 
   /**
    * Handles the content change event.
