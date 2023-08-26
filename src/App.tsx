@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import lzString from 'lz-string'
 import QuillWrapper from './QuillWrapper';
+import GitHub from './GitHub';
 
 import Nav from './Nav';
 
@@ -60,6 +61,8 @@ function App(): JSX.Element {
         readOnly={!contentEditable}
         value={siteContent}
       />
+
+      <GitHub />
     </>
   );
 }
